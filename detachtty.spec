@@ -1,7 +1,7 @@
 #
 %define		_snapshot	bese20071213
-Summary:	An utility that lets you run interactive programs non-interactively.
-Summary(pl.UTF-8):	Narzędzie pozwalające na nieinteraktywne uruchamianie interaktywnych programów.
+Summary:	An utility that lets you run interactive programs non-interactively
+Summary(pl.UTF-8):	Narzędzie pozwalające na nieinteraktywne uruchamianie interaktywnych programów
 Name:		detachtty
 Version:	0.%{_snapshot}
 Release:	1
@@ -11,10 +11,6 @@ Group:		Applications
 Source0:	%{name}-%{version}.tar.gz
 # Source0-md5:	9ad00851091df6ecf40489ef83c668f7
 URL:		http://www.cliki.net/detachtty
-%if %{with initscript}
-BuildRequires:	rpmbuild(macros) >= 1.228
-Requires(post,preun):	/sbin/chkconfig
-%endif
 Suggests:	openssh-clients
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,17 +32,6 @@ działających procesach uruchomionych w środowisku Common Lisp.
 %setup -q
 
 %build
-# if ac/am/* rebuilding is necessary, do it in this order and add
-# appropriate BuildRequires
-#%%{__intltoolize}
-#%%{__gettextize}
-#%%{__libtoolize}
-#%%{__aclocal}
-#%%{__autoconf}
-#%%{__autoheader}
-#%%{__automake}
-#cp -f /usr/share/automake/config.sub .
-
 %{__make} \
 	CFLAGS="%{rpmcflags} -DNEED_PTY_H" \
 	LDFLAGS="%{rpmldflags}"
